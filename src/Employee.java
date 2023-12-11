@@ -5,22 +5,19 @@ public class Employee {
     private String firstName;
     private String lastName;
     private String patronymic;
-    private Byte branch;
+    private int branch;
     private int salary;
 
     // Class Constructor
-    public static Employee createEmployee(String lastName, String firstName, String patronymic, int branch, int salary) {
-        Employee employee = new Employee();
-        employee.employeeID = employeeIDCounter;
+    public Employee(String lastName, String firstName, String patronymic, int branch, int salary) {
+        this.employeeID = employeeIDCounter;
         employeeIDCounter += 1;
 
-        employee.firstName = firstName;
-        employee.lastName = lastName;
-        employee.patronymic = patronymic;
-        employee.branch = (byte) branch;
-        employee.salary = salary;
-
-        return employee;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.patronymic = patronymic;
+        this.branch = branch;
+        this.salary = salary;
     }
     // Getters and Setters
     public int getEmployeeID() {
@@ -48,11 +45,11 @@ public class Employee {
         this.patronymic = patronymic;
     }
 
-    public Byte getBranch() {
+    public int getBranch() {
         return branch;
     }
     public void setBranch(int branch) {
-        this.branch = (byte) branch;
+        this.branch = branch;
     }
 
     public int getSalary(){ return salary; }
