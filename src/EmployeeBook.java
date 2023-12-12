@@ -125,7 +125,7 @@ public class EmployeeBook {
         int salaryMin = Integer.MAX_VALUE;
         int salaryMinEmployee = -1;
 
-        for (int i = 1; i < this.employeeList.length; i++) {
+        for (int i = 0; i < this.employeeList.length; i++) {
             Employee employee = this.employeeList[i];
 
             if (employee == null) {
@@ -137,6 +137,9 @@ public class EmployeeBook {
                 }
             }
         }
+        if(salaryMinEmployee == -1){
+            throw new RuntimeException("Данная книга сотрудников пуста, либо нет записей сотрудников в указанном отделе");
+        }
         return this.employeeList[salaryMinEmployee];
     }
 
@@ -147,7 +150,7 @@ public class EmployeeBook {
         int salaryMax = Integer.MIN_VALUE;
         int salaryMaxEmployee = -1;
 
-        for (int i = 1; i < this.employeeList.length; i++) {
+        for (int i = 0; i < this.employeeList.length; i++) {
             Employee employee = this.employeeList[i];
 
             if (employee == null) {
@@ -159,11 +162,14 @@ public class EmployeeBook {
                 }
             }
         }
+        if(salaryMaxEmployee == -1){
+            throw new RuntimeException("Данная книга сотрудников пуста, либо нет записей сотрудников в указанном отделе");
+        }
         return this.employeeList[salaryMaxEmployee];
     }
 
     public void findEmployeesBySalaryBelow(int sample){
-        for (int i = 1; i < this.employeeList.length; i++) {
+        for (int i = 0; i < this.employeeList.length; i++) {
             Employee employee = this.employeeList[i];
 
             if (employee == null) {
@@ -175,7 +181,7 @@ public class EmployeeBook {
     }
 
     public void findEmployeesBySalaryAbove(int sample){
-        for (int i = 1; i < this.employeeList.length; i++) {
+        for (int i = 0; i < this.employeeList.length; i++) {
             Employee employee = this.employeeList[i];
 
             if (employee == null) {
@@ -228,9 +234,7 @@ public class EmployeeBook {
     }
 
     public void modifySalariesBy(int branch, int percent) {
-        for (int i = 1; i < this.employeeList.length; i++) {
-            Employee employee = this.employeeList[i];
-
+        for (Employee employee : this.employeeList) {
             if (employee == null) {
                 break;
             } else if (employee.isCorrectBranch(branch)) {
@@ -241,7 +245,7 @@ public class EmployeeBook {
     }
 
     public void printEmployeesByBranch(){
-        for (int i = 1; i <= branchNumber; i++) {
+        for (int i = 0; i <= branchNumber; i++) {
             System.out.println("===== Отдел номер " + i + " =====");
 
             for (int e = 0; e < this.employeeList.length; e++) {
